@@ -12,11 +12,14 @@ export default class App extends Component {
     event.preventDefault();
     console.log('Service guarantess citizenship!');
   }
+  fire(input) {
+    console.log(input, 'I\'m doing my part!')
+  }
   render() {
     return (
       <Fragment>
         Ayy yo, world.
-        <List data={this.state.testData} voterator={this.voterator.bind(this)} />
+        <List data={this.state.testData} voterator={this.voterator.bind(this)} fire={this.fire.bind(this)}/>
       </Fragment>
     )
   }

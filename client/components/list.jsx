@@ -5,7 +5,13 @@ const List = (props) => {
   return( 
     <ol>
       {props.data.map((datum, index) =>
-      <ListEntry key={index} name={datum} voterator={props.voterator} />
+      <ListEntry 
+        key={index} 
+        name={datum} 
+        voterator={props.voterator} 
+        fire={props.fire}
+        primary={true}
+        />
         )}
     </ol>
   )

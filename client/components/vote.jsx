@@ -2,7 +2,7 @@ import React, {Fragment} from 'react'
 
 const Component = (props) => {
   return( 
-    <a onClick={(event) => props.voterator(event)}>Lick it and click it</a>
+    <a onClick={(event) => props.voterator(event)}>You know you want to click it.</a>
   )
 };
 
