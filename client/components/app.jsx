@@ -1,5 +1,6 @@
 import React, {Fragment, Component} from 'react';
 import List from './list.jsx'
+import Results from './results.jsx';
 
 export default class App extends Component {
   constructor(props) {
@@ -19,7 +20,12 @@ export default class App extends Component {
     return (
       <Fragment>
         Ayy yo, world.
-        <List data={this.state.testData} voterator={this.voterator.bind(this)} fire={this.fire.bind(this)}/>
+        <List 
+          data={this.state.testData} 
+          voterator={this.voterator.bind(this)} 
+          fire={this.fire.bind(this)}
+        />
+        <Results />
       </Fragment>
     )
   }
