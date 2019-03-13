@@ -8,12 +8,12 @@ module.exports = {
   path: DIST_DIR
 },
   module : {
-  rules : [
-    {
-      test : /\.jsx?/,
-      include : SRC_DIR,
-      loader : 'babel-loader',
-    }
-  ]
+    rules : [
+      {
+        test : /\.jsx?/,
+        include : SRC_DIR,
+        loader : 'babel-loader',
+      }
+    ]
   }
 };
