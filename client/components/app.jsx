@@ -1,5 +1,4 @@
 import React, {Fragment, Component} from 'react';
-import ReactDOM from 'react-dom';
 
 export default class App extends Component {
   constructor(props) {
@@ -11,7 +10,9 @@ export default class App extends Component {
 
   render() {
     return (
-      null
+      <Fragment>
+        Ayy yo, world.
+      </Fragment>
     )
   }
 }
