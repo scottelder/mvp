@@ -1,6 +1,5 @@
 import React, {Fragment, Component} from 'react';
 import List from './list.jsx'
-import Results from './results.jsx';
 import Axios from 'axios';
 
 export default class App extends Component {
@@ -27,8 +26,9 @@ export default class App extends Component {
           data={this.state.testData} 
           voterator={this.voterator.bind(this)} 
           fire={this.fire.bind(this)}
+          primary={true}
         />
-        <Results results={this.state.testResults}/>
+        <List data={this.state.testResults}/>
       </Fragment>
     )
   }

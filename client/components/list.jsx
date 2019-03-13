@@ -10,7 +10,7 @@ const List = (props) => {
         name={datum} 
         voterator={props.voterator} 
         fire={props.fire}
-        primary={true}
+        primary={props.primary}
         />
         )}
     </ol>

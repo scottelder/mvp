@@ -6,7 +6,12 @@ const ListEntry = (props) => {
   return( 
     <div>
       {props.name + '\n'}
-      {props.primary ? <Input fire={props.fire} /> : <Vote voterator={props.voterator} />}
+      {props.primary 
+        ? <Input fire={props.fire} /> 
+        : props.secondary
+        ? <Vote voterator={props.voterator} />
+        : null
+      }
     </div>
   )
 };
