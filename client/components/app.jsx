@@ -1,12 +1,14 @@
 import React, {Fragment, Component} from 'react';
 import List from './list.jsx'
 import Results from './results.jsx';
+import Axios from 'axios';
 
 export default class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      testData: ['Trevor Smith']
+      testData: ['Trevor Smith'],
+      testResults: ['I\'m a result!']
     }
   }
   voterator(event) {
@@ -15,6 +17,7 @@ export default class App extends Component {
   }
   fire(input) {
     console.log(input, 'I\'m doing my part!')
+    //Axios.get('someshit from imdb via the server')
   }
   render() {
     return (
@@ -25,7 +28,7 @@ export default class App extends Component {
           voterator={this.voterator.bind(this)} 
           fire={this.fire.bind(this)}
         />
-        <Results />
+        <Results results={this.state.testResults}/>
       </Fragment>
     )
   }

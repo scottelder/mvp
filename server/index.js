@@ -9,6 +9,7 @@ const distPath = path.join(__dirname, '../dist')
 
 app.use(express.static(distPath));
 
+
 const port = 3012;
 app.listen(port, () => {
   console.log(`Server running on ${port}`);

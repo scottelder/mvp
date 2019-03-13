@@ -1,8 +1,10 @@
 import React, {Fragment} from 'react'
 
 const ResultEntry = (props) => {
-  return( 
-    props.entry
+  return(
+    <li>
+      {props.entry}
+    </li> 
   )
 };
 
