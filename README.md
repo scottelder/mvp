@@ -7,4 +7,4 @@ exploits.
 
 ## That's not very cash money of you
 No money, goods, or services shall ever be paid or transferred to me or to anyone else as a condition 
-for, or result of, using this app.
+for, or result of, using this app. I don't have anything for you legal team to take.
