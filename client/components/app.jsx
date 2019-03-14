@@ -21,7 +21,6 @@ export default class App extends Component {
         <List 
           data={this.state.HRATX39} 
           voterator={this.voterator.bind(this)} 
-          fire={this.fire.bind(this)}
           primary={true}
           results={this.state.results}
         />
