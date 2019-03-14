@@ -19,6 +19,7 @@ const reggie = /\s/g;
 
 app.post('/search', (req, res) => {
   let vanDien = JSON.stringify(req.body.data);
+  const owner = req.body.owner;
   vanDien = vanDien.replace(reggie, '%20');
   let dizzy;
 
@@ -31,20 +32,29 @@ app.post('/search', (req, res) => {
           const firstResult = {
             name: data.data.results[0].name, 
             image_URL: imgURL+data.data.results[0].profile_path,
+            owner: owner,
             votes: 1
           }
             return firstResult;
           })
-        .then(data => {res.send(data); return data})
+        .then(data => {res.status(201).send(data); return data})
         .then(data => db.addActor(data, (err, data) => {
           if (err) console.log(err, 'died there again')
           else console.log(data)
         }))
         .catch(err => console.log(err, 'AAAAAAHHHHH!! HELP ME!'))
     }
-    else res.send(dizzy[0]);
+    else res.status(201).send(dizzy[0]);
   });
 });
+
+app.post('/vote', (req, res) => {
+  const target = req.body.data;
+  db.updateVotes(target, (err, data) => {
+    if (err) console.log(err, 'shit')
+    else console.log(data, 'shit yes')
+  })
+})
 
 app.use(express.static(distPath));
 

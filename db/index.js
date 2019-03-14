@@ -23,12 +23,24 @@ const addActor = (newActor, callback) => {
 const findActor = (targetActor, callback) => {
   targetActor = targetActor.substring(1,targetActor.length-1) //Something weird is going on with the "" on the incoming data
   const reggie = new RegExp(targetActor, 'i');
-  Actor.find({name: reggie}, '-_id')
-    .then((data) => callback(null, data))
-    .catch((err) => callback(err, null));
+  Actor.find({name: reggie})
+    .then(data => callback(null, data))
+    .catch(err => callback(err, null));
 };
+
+const updateVotes = (target, callback) => {
+  findActor(target, (err, data) => {
+    if (err) callback(err, null)
+    else {
+      data[0].votes = data[0].votes+1;
+      data[0].save();
+      callback(null, 'success')
+    } 
+  })
+}
 
 module.exports = {
   addActor: addActor,
-  findActor: findActor
+  findActor: findActor,
+  updateVotes: updateVotes
 };

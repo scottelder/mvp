@@ -2,8 +2,13 @@ import React, {Fragment} from 'react';
 import ListEntry from './listentry.jsx';
 
 const List = (props) => {
+  const listStyle = {
+    
+    height: '400',
+    width: '50%'
+  }
   return( 
-    <ol>
+    <ol style={listStyle}>
       {props.data.map((datum, index) =>
       <ListEntry 
         key={index}

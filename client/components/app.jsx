@@ -6,7 +6,7 @@ export default class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      HRATX39: ['Trevor Smith','Laura Robertson','Noah Spann','Mike Janes','James Boyett','Gee Li','Sarah Spear','Remington Davis','Scott Elder','Hannah Kang','Tony Burroughs','Dan Kaiser','Linden Kueck','Nick Fredman','Zubair Desai','Nik Mentakis','James Dempsey','Sean Meyer','Matt Brannon'],
+      HRATX39: ['Trevor Smith','Laura Robertson','Noah Spann','Mike Janes','James Boyett','Gee Li','Sarah Spear','Remington Davis','Scott Elder','Hannah Kang','Tony Burroughs','Dan Kaiser','Linden Kueck','Nick Fredman','Zubair Desai','Justin Baize','Nik Mentakis','James Dempsey','Sean Meyer','Matt Brannon'],
       results: []
     }
     this.server = '127.0.0.1';
