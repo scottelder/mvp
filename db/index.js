@@ -15,7 +15,7 @@ const addActor = (newActor, callback) => {
   const actorRecord = new Actor(newActor);
   actorRecord.save()
     .then(() => callback(null, `We've just landed on Klendathu`))
-    .catch(() => callback(err, null));
+    .catch((err) => callback(err, null));
 };
 
 const findActor = (targetActor, callback) => {

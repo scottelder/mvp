@@ -27,7 +27,18 @@ app.post('/search', (req, res) => {
     else dizzy = data;
     if (!dizzy.length) {
       axios.get(searchURL+vanDien)
-        .then(data => res.send({name: data.data.results[0].name, image_URL: imgURL+data.data.results[0].profile_path}))
+        .then(data => {
+          const firstResult = {
+            name: data.data.results[0].name, 
+            image_URL: imgURL+data.data.results[0].profile_path
+          }
+            return firstResult;
+          })
+        .then(data => {res.send(data); return data})
+        .then(data => db.addActor(data, (err, data) => {
+          if (err) console.log(err, 'died there again')
+          else console.log('bug brain captured')
+        }))
         .catch(err => console.log(err, 'AAAAAAHHHHH!! HELP ME!'))
     }
     else res.send(dizzy[0]);
