@@ -6,7 +6,8 @@ mongoose.connect(dbURI, {useNewUrlParser: true});
 
 const actorSchema = new Schema({
   name: String,
-  image_URL: String
+  image_URL: String,
+  votes: Number
 });
 
 const Actor = mongoose.model('Actor', actorSchema);

@@ -30,7 +30,8 @@ app.post('/search', (req, res) => {
         .then(data => {
           const firstResult = {
             name: data.data.results[0].name, 
-            image_URL: imgURL+data.data.results[0].profile_path
+            image_URL: imgURL+data.data.results[0].profile_path,
+            votes: 1
           }
             return firstResult;
           })
