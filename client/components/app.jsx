@@ -9,6 +9,7 @@ export default class App extends Component {
       testData: ['Trevor Smith'],
       testResults: ['I\'m a result!']
     }
+    this.server = '127.0.0.1';
   }
   voterator(event) {
     event.preventDefault();
@@ -16,7 +17,12 @@ export default class App extends Component {
   }
   fire(input) {
     console.log(input, 'I\'m doing my part!')
-    //Axios.get('someshit from imdb via the server')
+    Axios.post(`/search`, {data: input})
+      .then((result) => {
+        this.setState({results: result.data});
+        console.log(result.data, 'Come on you apes! You want to live forever?');
+      })
+      .catch((err) => console.log(err, `If you don't do your job, I'll shoot you myself.`));
   }
   render() {
     return (
@@ -28,7 +34,9 @@ export default class App extends Component {
           fire={this.fire.bind(this)}
           primary={true}
         />
-        <List data={this.state.testResults}/>
+        <List 
+          data={this.state.testResults}
+        />
       </Fragment>
     )
   }
