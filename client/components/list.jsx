@@ -6,11 +6,14 @@ const List = (props) => {
     <ol>
       {props.data.map((datum, index) =>
       <ListEntry 
-        key={index} 
-        name={datum} 
+        key={index}
+        id={index} 
+        name={datum.name ? datum.name : datum}
+        picture={datum.image_URL ? datum.image_URL : null} 
         voterator={props.voterator} 
         fire={props.fire}
         primary={props.primary}
+        results={props.results}
         />
         )}
     </ol>

@@ -6,8 +6,8 @@ export default class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      testData: ['Trevor Smith'],
-      testResults: ['I\'m a result!']
+      HRATX39: ['Trevor Smith','Laura Robertson','Noah Spann','Mike Janes','James Boyett','Gee Li','Sarah Spear','Remington Davis','Scott Elder','Hannah Kang','Tony Burroughs','Dan Kaiser','Linden Kueck','Nick Fredman','Zubair Desai','Nik Mentakis','James Dempsey','Sean Meyer','Matt Brannon'],
+      results: []
     }
     this.server = '127.0.0.1';
   }
@@ -15,27 +15,15 @@ export default class App extends Component {
     event.preventDefault();
     console.log('Service guarantess citizenship!');
   }
-  fire(input) {
-    console.log(input, 'I\'m doing my part!')
-    Axios.post(`/search`, {data: input})
-      .then((result) => {
-        this.setState({results: result.data});
-        console.log(result.data, 'Come on you apes! You want to live forever?');
-      })
-      .catch((err) => console.log(err, `If you don't do your job, I'll shoot you myself.`));
-  }
   render() {
     return (
       <Fragment>
-        Ayy yo, world.
         <List 
-          data={this.state.testData} 
+          data={this.state.HRATX39} 
           voterator={this.voterator.bind(this)} 
           fire={this.fire.bind(this)}
           primary={true}
-        />
-        <List 
-          data={this.state.testResults}
+          results={this.state.results}
         />
       </Fragment>
     )

@@ -38,7 +38,7 @@ app.post('/search', (req, res) => {
         .then(data => {res.send(data); return data})
         .then(data => db.addActor(data, (err, data) => {
           if (err) console.log(err, 'died there again')
-          else console.log('bug brain captured')
+          else console.log(data)
         }))
         .catch(err => console.log(err, 'AAAAAAHHHHH!! HELP ME!'))
     }

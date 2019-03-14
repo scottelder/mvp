@@ -7,7 +7,8 @@ mongoose.connect(dbURI, {useNewUrlParser: true});
 const actorSchema = new Schema({
   name: String,
   image_URL: String,
-  votes: Number
+  owner: String,
+  votes: Number,
 });
 
 const Actor = mongoose.model('Actor', actorSchema);
@@ -25,9 +26,9 @@ const findActor = (targetActor, callback) => {
   Actor.find({name: reggie}, '-_id')
     .then((data) => callback(null, data))
     .catch((err) => callback(err, null));
-}
+};
 
 module.exports = {
   addActor: addActor,
   findActor: findActor
-}
+};
