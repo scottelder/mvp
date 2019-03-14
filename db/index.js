@@ -34,13 +34,20 @@ const updateVotes = (target, callback) => {
     else {
       data[0].votes = data[0].votes+1;
       data[0].save();
-      callback(null, 'success')
-    } 
-  })
-}
+      callback(null, 'success');
+    };
+  });
+};
+
+const findHighestVoted = (target, callback) => {
+  Actor.find({owner: target}, {_id:0, owner:0}).sort(({votes: -1})).limit(5)
+    .then(data => callback(null, data))
+    .catch(err => callback(err, null))
+};
 
 module.exports = {
   addActor: addActor,
   findActor: findActor,
-  updateVotes: updateVotes
+  updateVotes: updateVotes,
+  findHighestVoted: findHighestVoted
 };

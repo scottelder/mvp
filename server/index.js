@@ -52,9 +52,17 @@ app.post('/vote', (req, res) => {
   const target = req.body.data;
   db.updateVotes(target, (err, data) => {
     if (err) console.log(err, 'shit')
-    else console.log(data, 'shit yes')
+    else res.status(201).send(data, 'shit yeah');
+  });
+});
+
+app.get('/voted/:id', (req, res) => {
+  const target = req.params.id;
+  db.findHighestVoted(target, (err, data) => {
+    if (err) console.log(err, 'shit')
+    else res.send(data);
   })
-})
+});
 
 app.use(express.static(distPath));
 

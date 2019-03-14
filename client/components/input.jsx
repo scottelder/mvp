@@ -10,7 +10,8 @@ export default class Input extends Component {
 
   render() {
     return (
-      <input 
+      <input
+      style={this.inputStyle} 
       type='text' 
       placeholder='I yearn for your input'
       onChange={(event) => this.setState({input: event.target.value})}
