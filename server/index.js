@@ -3,6 +3,7 @@ const express = require('express');
 const bodyParser = require ('body-parser');
 const path = require('path');
 const axios = require('axios');
+const db = require('../db/index.js');
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
@@ -19,9 +20,18 @@ const reggie = /\s/g;
 app.post('/search', (req, res) => {
   let vanDien = JSON.stringify(req.body.data);
   vanDien = vanDien.replace(reggie, '%20');
-  axios.get(searchURL+vanDien)
-    .then(data => res.send([data.data.results[0].name, imgURL+data.data.results[0].profile_path]))
-    .catch(err => console.log(err, 'AAAAAAHHHHH!! HELP ME!'))
+  let dizzy;
+
+  db.findActor(vanDien, (err, data) => {
+    if (err) console.log(err, 'died there')
+    else dizzy = data;
+    if (!dizzy.length) {
+      axios.get(searchURL+vanDien)
+        .then(data => res.send({name: data.data.results[0].name, image_URL: imgURL+data.data.results[0].profile_path}))
+        .catch(err => console.log(err, 'AAAAAAHHHHH!! HELP ME!'))
+    }
+    else res.send(dizzy[0]);
+  });
 });
 
 app.use(express.static(distPath));
