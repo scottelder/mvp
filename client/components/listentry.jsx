@@ -9,7 +9,7 @@ class ListEntry extends Component {
     super(props)
     this.state = {
       results: [],
-      candidate: []
+      candidates: []
     }
    this.divStyle = {
      paddingTop: '4px',
@@ -55,6 +55,7 @@ class ListEntry extends Component {
         : null
         }
         {this.state.results ? <List data={this.state.results}/> : null}
+        {this.state.candidates.length ? <List data={this.state.candidates}/> : null}
       </div>
     )
   }

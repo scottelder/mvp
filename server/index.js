@@ -61,7 +61,7 @@ app.get('/voted/:id', (req, res) => {
   db.findHighestVoted(target, (err, data) => {
     if (err) console.log(err, 'shit')
     else res.send(data);
-  })
+  });
 });
 
 app.use(express.static(distPath));

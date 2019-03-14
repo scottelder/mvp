@@ -22,7 +22,9 @@ const addActor = (newActor, callback) => {
 
 const findActor = (targetActor, callback) => {
   targetActor = targetActor.substring(1,targetActor.length-1) //Something weird is going on with the "" on the incoming data
-  const reggie = new RegExp(targetActor, 'i');
+  const percent20 = /%20/g;
+  targetActor = targetActor.replace(percent20, ' ');
+  const reggie = new RegExp(targetActor, 'i'); //Problems with spaces in searches (%20)
   Actor.find({name: reggie})
     .then(data => callback(null, data))
     .catch(err => callback(err, null));
