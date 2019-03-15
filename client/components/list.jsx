@@ -3,9 +3,9 @@ import ListEntry from './listentry.jsx';
 
 const List = (props) => {
   const listStyle = {
-    
+
     height: '400',
-    width: '50%'
+    width: '100%'
   }
   return( 
     <ol style={listStyle}>

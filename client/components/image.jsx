@@ -7,7 +7,8 @@ const Image = (props) => {
     maxWidth: '100px',
     boxShadow: '0px 0px 10px 1px #242121',
     margin: '4px',
-    borderRadius: '2px'
+    borderRadius: '2px',
+    cursor: 'pointer'
   }
   return( 
     <img
