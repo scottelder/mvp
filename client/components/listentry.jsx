@@ -35,7 +35,7 @@ class ListEntry extends Component {
   }
   voterator(event) {
     event.preventDefault();
-    Axios.post('/vote', {data: event.target.title})
+    Axios.post(`/vote/${this.props.name}`, {data: event.target.title})
       .then(result => console.log(result))
       .catch(err => console.log(err))
   }
@@ -59,8 +59,8 @@ class ListEntry extends Component {
         {this.props.picture 
         ? <Image 
             src={this.props.picture} 
-            alt={this.props.name} 
-            title={this.props.name} 
+            alt={this.props.actor} 
+            title={this.props.actor} 
             voterator={this.voterator.bind(this)}
           />
         : this.props.name + '\n'}

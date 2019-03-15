@@ -23,14 +23,14 @@ app.post('/search', (req, res) => {
   vanDien = vanDien.replace(reggie, '%20');
   let dizzy;
 
-  db.findActor(vanDien, (err, data) => {
+  db.findActor(vanDien, owner, (err, data) => {
     if (err) console.log(err, 'died there')
     else dizzy = data;
     if (!dizzy.length) {
       axios.get(searchURL+vanDien)
         .then(data => {
           const firstResult = {
-            name: data.data.results[0].name, 
+            actor: data.data.results[0].name, 
             image_URL: imgURL+data.data.results[0].profile_path,
             owner: owner,
             votes: 1
@@ -48,11 +48,12 @@ app.post('/search', (req, res) => {
   });
 });
 
-app.post('/vote', (req, res) => {
+app.post('/vote/:id', (req, res) => {
   const target = req.body.data;
-  db.updateVotes(target, (err, data) => {
+  const owner = req.params.id;
+  db.updateVotes(target, owner, (err, data) => {
     if (err) console.log(err, 'shit')
-    else res.status(201).send(data, 'shit yeah');
+    else res.status(201).send(data);
   });
 });
 

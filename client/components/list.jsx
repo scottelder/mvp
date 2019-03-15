@@ -13,7 +13,8 @@ const List = (props) => {
       <ListEntry 
         key={index}
         id={index} 
-        name={datum.name ? datum.name : datum}
+        name={datum.owner ? datum.owner : datum}
+        actor={datum.actor ? datum.actor: null}
         picture={datum.image_URL ? datum.image_URL : null} 
         voterator={props.voterator} 
         primary={props.primary}

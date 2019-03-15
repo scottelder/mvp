@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 mongoose.connect(dbURI, {useNewUrlParser: true});
 
 const actorSchema = new Schema({
-  name: String,
+  actor: String,
   image_URL: String,
   owner: String,
   votes: Number,
@@ -20,18 +20,20 @@ const addActor = (newActor, callback) => {
     .catch((err) => callback(err, null));
 };
 
-const findActor = (targetActor, callback) => {
-  targetActor = targetActor.substring(1,targetActor.length-1) //Something weird is going on with the "" on the incoming data
+const findActor = (targetActor, owner, callback) => {
+  // targetActor = targetActor.substring(1,targetActor.length-1) //Something weird is going on with the "" on the incoming data
   const percent20 = /%20/g;
   targetActor = targetActor.replace(percent20, ' ');
   const reggie = new RegExp(targetActor, 'i'); //Problems with spaces in searches (%20)
-  Actor.find({name: reggie})
+  console.log(reggie, 'reggie')
+  console.log(owner, 'owner')
+  Actor.find({actor: reggie, owner: owner})
     .then(data => callback(null, data))
     .catch(err => callback(err, null));
 };
 
-const updateVotes = (target, callback) => {
-  findActor(target, (err, data) => {
+const updateVotes = (target, owner, callback) => {
+  findActor(target, owner, (err, data) => {
     if (err) callback(err, null)
     else {
       data[0].votes = data[0].votes+1;
@@ -42,7 +44,7 @@ const updateVotes = (target, callback) => {
 };
 
 const findHighestVoted = (target, callback) => {
-  Actor.find({owner: target}, {_id:0, owner:0}).sort(({votes: -1})).limit(5)
+  Actor.find({owner: target}, {_id:0}).sort(({votes: -1})).limit(5)
     .then(data => callback(null, data))
     .catch(err => callback(err, null))
 };

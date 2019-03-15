@@ -12,7 +12,7 @@ export default class App extends Component {
     return (
       <Fragment>
         <List 
-          data={this.state.HRATX39} 
+          data={this.state.HRATX39}
           primary={true}
           results={this.state.results}
         />
