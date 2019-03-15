@@ -11,7 +11,11 @@
   "author": "Scott Elder",
   "license": "ISC",
   "dependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.3.1",
+    "@babel/preset-react": "^7.0.0",
     "axios": "^0.18.0",
+    "babel-loader": "^8.0.5",
     "babel-preset-react": "^6.24.1",
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",
@@ -24,12 +28,7 @@
     "react-dom": "^16.8.1",
     "react-router-dom": "^4.3.1",
     "webpack": "^4.29.2",
-    "webpack-cli": "^3.2.3",
-    "@babel/core": "^7.2.2",
-    "@babel/preset-env": "^7.3.1",
-    "@babel/preset-react": "^7.0.0",
-    "babel-loader": "^8.0.5"
+    "webpack-cli": "^3.2.3"
   },
-  "devDependencies": {
-  }
+  "devDependencies": {}
 }

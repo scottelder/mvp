@@ -1,5 +1,6 @@
 require('dotenv').config();
 const express = require('express');
+const cors = require('cors')
 const bodyParser = require ('body-parser');
 const path = require('path');
 const axios = require('axios');
@@ -7,6 +8,7 @@ const db = require('../db/index.js');
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
+app.use(cors());
 const distPath = path.join(__dirname, '../dist')
 const imgURL = 'https://image.tmdb.org/t/p/w300_and_h450_bestv2';
 const searchURL = `https://api.themoviedb.org/3/search/person?api_key=${process.env.MOVIEDB_API_KEY}&language=en-US&query=`
@@ -67,7 +69,7 @@ app.get('/voted/:id', (req, res) => {
 
 app.use(express.static(distPath));
 
-const port = 3012;
+const port = 80 || 3012;
 app.listen(port, () => {
   console.log(`Server running on ${port}`);
 });
