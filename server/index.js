@@ -69,7 +69,7 @@ app.get('/voted/:id', (req, res) => {
 
 app.use(express.static(distPath));
 
-const port = 80 || 3012;
+const port = 3012;
 app.listen(port, () => {
   console.log(`Server running on ${port}`);
 });
