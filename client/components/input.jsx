@@ -6,6 +6,11 @@ export default class Input extends Component {
     this.state = {
       input: ''
     }
+    this.inputStyle = {
+      height: '18px',
+      widht: '450px',
+      borderRadius: '2px'
+    }
   }
 
   render() {

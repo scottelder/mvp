@@ -16,13 +16,16 @@ class ListEntry extends Component {
      paddingTop: '4px',
      paddingLeft: '2px',
      paddingRight: '2px',
-     paddingBottom: '4px'
+     paddingBottom: '4px',
+     fontFamily: `'Roboto', sans-serif`,
    }
    this.priStyle = {
     paddingTop: '4px',
     paddingLeft: '2px',
     paddingRight: '2px',
-    paddingBottom: '4px'
+    paddingBottom: '4px',
+    fontFamily: `'Roboto', sans-serif`,
+    color: '#c0b283'
    }
   }
   fire(input) {
