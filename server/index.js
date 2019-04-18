@@ -67,6 +67,14 @@ app.get('/voted/:id', (req, res) => {
   });
 });
 
+app.get('/test', (req, res) => {
+  res.send('Postman. It makes life easier.');
+});
+
+app.post('/test', (req, res) => {
+  res.send(`You gave me this: ${req.body.data}`);
+});
+
 app.use(express.static(distPath));
 
 const port = process.env.PORT || 3012;
