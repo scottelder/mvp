@@ -1,6 +1,6 @@
 require('dotenv').config();
 const express = require('express');
-const cors = require('cors')
+const cors = require('cors');
 const bodyParser = require ('body-parser');
 const path = require('path');
 const axios = require('axios');
@@ -65,14 +65,6 @@ app.get('/voted/:id', (req, res) => {
     if (err) console.log(err, 'shit')
     else res.send(data);
   });
-});
-
-app.get('/test', (req, res) => {
-  res.send('Postman. It makes life easier.');
-});
-
-app.post('/test', (req, res) => {
-  res.send(`You gave me this: ${req.body.data}`);
 });
 
 app.use(express.static(distPath));

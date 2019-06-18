@@ -11,22 +11,6 @@ class ListEntry extends Component {
       results: [],
       candidates: []
     }
-   this.divStyle = {
-     display: 'inline-block',
-     paddingTop: '4px',
-     paddingLeft: '2px',
-     paddingRight: '2px',
-     paddingBottom: '4px',
-     fontFamily: `'Roboto', sans-serif`,
-   }
-   this.priStyle = {
-    paddingTop: '4px',
-    paddingLeft: '2px',
-    paddingRight: '2px',
-    paddingBottom: '4px',
-    fontFamily: `'Roboto', sans-serif`,
-    color: '#c0b283'
-   }
   }
   fire(input) {
     Axios.post(`/search`, {data: input, owner: this.props.name})
@@ -55,21 +39,37 @@ class ListEntry extends Component {
       .then(data => this.setState({candidates: data.data}))
       .catch(err => console.log(err, `Denise Richard's acting`))
     }
+    this.divStyle = {
+      display: 'inline-block',
+      paddingTop: '4px',
+      paddingLeft: '2px',
+      paddingRight: '2px',
+      paddingBottom: '4px',
+      fontFamily: `'Roboto', sans-serif`,
+    }
+    this.priStyle = {
+     paddingTop: '4px',
+     paddingLeft: '2px',
+     paddingRight: '2px',
+     paddingBottom: '4px',
+     fontFamily: `'Roboto', sans-serif`,
+     color: '#c0b283'
+    }
   }
   render() {
     return( 
       <div style={this.props.primary ? this.priStyle : this.divStyle}>
         {this.props.picture 
-        ? <Image 
-            src={this.props.picture} 
-            alt={this.props.actor} 
-            title={this.props.actor} 
-            voterator={this.voterator.bind(this)}
-          />
-        : this.props.name + '\n'}
+          ? <Image 
+              src={this.props.picture} 
+              alt={this.props.actor} 
+              title={this.props.actor} 
+              voterator={this.voterator.bind(this)}
+            />
+          : this.props.name + '\n'}
         {this.props.primary 
-        ? <Input fire={this.fire.bind(this)} /> 
-        : null
+          ? <Input fire={this.fire.bind(this)} /> 
+          : null
         }
         {this.state.results ? <List data={this.state.results}/> : null}
         {this.state.candidates.length ? <List data={this.state.candidates}/> : null}

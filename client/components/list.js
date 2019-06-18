@@ -11,15 +11,15 @@ const List = (props) => {
   return( 
     <ol style={listStyle}>
       {props.data.map((datum, index) =>
-      <ListEntry 
-        key={index}
-        id={index} 
-        name={datum.owner ? datum.owner : datum}
-        actor={datum.actor ? datum.actor: null}
-        picture={datum.image_URL ? datum.image_URL : null} 
-        voterator={props.voterator} 
-        primary={props.primary}
-        results={props.results}
+        <ListEntry 
+          key={index}
+          id={index} 
+          name={datum.owner ? datum.owner : datum}
+          actor={datum.actor ? datum.actor: null}
+          picture={datum.image_URL ? datum.image_URL : null} 
+          voterator={props.voterator} 
+          primary={props.primary}
+          results={props.results}
         />
         )}
     </ol>

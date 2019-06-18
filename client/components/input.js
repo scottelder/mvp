@@ -1,4 +1,4 @@
-import React, {Fragment, Component} from 'react';
+import React, { Component } from 'react';
 
 export default class Input extends Component {
   constructor(props) {
@@ -8,9 +8,12 @@ export default class Input extends Component {
     }
     this.inputStyle = {
       height: '18px',
-      widht: '450px',
+      width: '200px',
       borderRadius: '2px'
     }
+  }
+  handleFire(){
+    this.props.fire(this.state.input), event.target.value = '' 
   }
 
   render() {
@@ -20,8 +23,7 @@ export default class Input extends Component {
         type='text' 
         placeholder='I yearn for your input'
         onChange={(event) => this.setState({input: event.target.value})}
-        // onKeyDown={(event) => console.log(event.key)}
-        onKeyDown={event => event.key === "Enter" ? (this.props.fire(this.state.input), event.target.value = null ): null }
+        onKeyDown={event => event.key === "Enter" ? this.handleFire() : null }
       >
       </input>
     )
