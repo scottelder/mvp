@@ -1,8 +1,8 @@
-import React, {Component, Fragment} from 'react';
+import React, {Component} from 'react';
 import Image from './image.jsx';
 import Input from './input.jsx';
 import List from './list.jsx'
-import Axios from 'axios';
+import axios from 'axios';
 
 class ListEntry extends Component {
   constructor(props) {
@@ -13,31 +13,31 @@ class ListEntry extends Component {
     }
   }
   fire(input) {
-    Axios.post(`/search`, {data: input, owner: this.props.name})
+    axios.post(`/search`, {data: input, owner: this.props.name})
       .then((result) => {
         this.setState({results: [result.data]});
         console.log('Service guarantees citizenship!');
       })
-      .catch((err) => console.log(err, `If you don't do your job, I'll shoot you myself.`));
+      .catch(console.log);
   }
   voterator(event) {
     event.preventDefault();
-    Axios.post(`/vote/${this.props.name}`, {data: event.target.title})
+    axios.post(`/vote/${this.props.name}`, {data: event.target.title})
       .then(result => console.log(result))
-      .catch(err => console.log(err))
+      .catch(console.log)
   }
   componentDidMount() {
     if (this.props.primary) {
-      Axios.get(`/voted/${this.props.name}`)
+      axios.get(`/voted/${this.props.name}`)
         .then(data => this.setState({candidates: data.data}))
-        .catch(err => console.log(err, `Denise Richard's acting`))
+        .catch(console.log);
     }
   }
   componentDidUpdate(prevProps, prevState) {
     if (prevState.results !== this.state.results) {
-      Axios.get(`/voted/${this.props.name}`)
+      axios.get(`/voted/${this.props.name}`)
       .then(data => this.setState({candidates: data.data}))
-      .catch(err => console.log(err, `Denise Richard's acting`))
+      .catch(console.log);
     }
     this.divStyle = {
       display: 'inline-block',

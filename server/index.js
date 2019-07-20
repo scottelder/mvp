@@ -44,7 +44,7 @@ app.post('/search', (req, res) => {
           if (err) console.log(err, 'died there again')
           else console.log(data)
         }))
-        .catch(err => console.log(err, 'AAAAAAHHHHH!! HELP ME!'))
+        .catch(err => console.log(err, `Denise Richard's Acting`))
     }
     else res.status(201).send(dizzy[0]);
   });

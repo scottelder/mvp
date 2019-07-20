@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import ListEntry from './listentry.jsx';
 
 const List = (props) => {

@@ -13,7 +13,7 @@ export default class Input extends Component {
     }
   }
   handleFire(){
-    this.props.fire(this.state.input), event.target.value = '' 
+    this.props.fire(this.state.input), event.target.value = '';
   }
 
   render() {
